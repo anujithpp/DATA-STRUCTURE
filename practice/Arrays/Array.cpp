@@ -30,6 +30,19 @@ void Array<T>::insert_at_begining(T key)
 	A[LB] = key;
 }
 
+template <class T>
+void Array<T>::insert_at_position(T key, int pos)
+{
+	UB = UB + 1;
+	k = UB - 1;
+	while (k >= pos)
+	{
+		A[k + 1] = A[k];
+		k -= 1;
+	}
+	A[pos] = key;
+}
+
 template <class U>
 ostream &operator<<(ostream &os, Array<U> M)
 {
