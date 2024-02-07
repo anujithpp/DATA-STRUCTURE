@@ -1,3 +1,3 @@
 # DS
 
-Data structures projects and questions for semester 2
+Data structures projects, question, solution, algoritham and flowchart for semester 2
