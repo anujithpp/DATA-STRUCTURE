@@ -1,31 +1,40 @@
-#include <iostream>
-#include <ostream>
+#include<iostream>
+#include<ostream>
+
 using namespace std;
-template <class T>
 
-class Array
-{
-	int LB, UB;
-	T A[100];
-
+template<class T>
+class Array {
+    int LB, UB;
+    T A[100];
 public:
-	Array();
-	Array(int, int, T[]);
-	void insert_at_end(T);
-	void insert_at_begining(T);
-	void insert_at_position(T, int);
-	void dlt_at_begining();
-    void dlt_at_index(int pos);
-    void dlt_at_end();
-    void dlt_at_index();
+    Array();
 
-	T linear_search(T);
-    T swap(T, int p, int q);
-    T swap();
-    T find_min();
-	T selection_sort();
-	T binary_search(T);
+    Array(int, int, T[]);
 
-	template <class U>
-	friend ostream &operator<<(ostream &, Array<U>);
+    void insert_at_end(T);
+
+    void insert_at_beg(T);
+
+    void insert_at_pos(T, int);
+
+    void delete_at_beg();
+
+    void delete_at_end();
+
+    void delete_at_index(int);
+
+    T linear_search(T);
+
+    void swap(int, int);
+
+    void selection_sort();
+
+    T binary_search(T);
+
+    void bubble_sort();
+
+    template<class U>
+    friend ostream &operator<<(ostream &, Array<U>);
 };
+
