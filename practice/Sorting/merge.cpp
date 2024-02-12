@@ -13,13 +13,12 @@ void merge(int a[],int b[],int c[]){
             c[k]=b[j];
             j++;
         }
-        k++;    
+        k++;
     }
 
     for(l=0;l<10;l++){
         cout<<c[l];
     }
-    
 }
 
 int main(){
