@@ -1,7 +1,7 @@
 #include "Array.cpp"
 
 int main() {
-    //Insetion Operations
+    //Insertion Operations
     cout << "INSERTION OPERATIONS" << endl;
     Array<int> myArray;
     cout << "INSERTION AT END " << endl;
@@ -58,6 +58,13 @@ int main() {
 
     myArray.bubble_sort();                                            //Bubble sort called
     cout << "AFTER BUBBLE SORT:" << myArray;
+
+    myArray.insert_at_beg(99);                                    //made array unsorted
+    cout<<"Unsorted Array: "<<myArray;
+
+    myArray.merge_sort(0, 8);
+    cout<<"AFTER MERGE SORT: "<<myArray;
+
 
     return 0;
 }

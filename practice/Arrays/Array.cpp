@@ -82,19 +82,6 @@ T Array<T>::linear_search(T key) {
     return index;
 }
 
-//template <class T>
-//T Array<T>::find_min(T,int,int)
-//{
-//	int min=LB;
-//	for(int j=LB+1;j<UB;j++)
-//	{
-//		if (A[j]<A[min])
-//		{
-//			min=j;
-//		}
-//	}
-//	return min;
-//}
 template<class T>
 void Array<T>::swap(int p, int q) {
     T t = A[p];
@@ -142,6 +129,64 @@ void Array<T>::bubble_sort() {
                 swap(j, j + 1);
             }
         }
+    }
+}
+
+template<class T>
+void Array<T>::merge(int LB, int mid, int UB) {
+    int n1 = mid - LB + 1;  // Size of left subarray
+    int n2 = UB - mid;      // Size of right subarray
+
+    // Create temporary arrays to store the left and right subarrays
+    T L[n1], R[n2];
+
+    // Copy data to temporary arrays
+    for (int i = 0; i < n1; i++) {
+        L[i] = A[LB + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        R[j] = A[mid + 1 + j];
+    }
+
+    // Merge the temporary arrays back into A[LB..UB]
+    int i = 0;  // Initial index of left subarray
+    int j = 0;  // Initial index of right subarray
+    int k = LB; // Initial index of merged subarray
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            A[k] = L[i];
+            i++;
+        } else {
+            A[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if any
+    while (i < n1) {
+        A[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if any
+    while (j < n2) {
+        A[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+
+template<class T>
+void Array<T>::merge_sort(int LB, int UB) {
+    if (LB < UB) {
+        int m = (LB + UB) / 2;
+        merge_sort(LB, m);          // Sort the left subarray
+        merge_sort(m + 1, UB);      // Sort the right subarray
+        merge(LB, m, UB);           // Merge the sorted subarrays
     }
 }
 

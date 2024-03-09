@@ -26,13 +26,17 @@ public:
 
     T linear_search(T);
 
+    T binary_search(T);
+
     void swap(int, int);
+
+    void merge(int LB,int mid, int UB);
 
     void selection_sort();
 
-    T binary_search(T);
-
     void bubble_sort();
+
+    void merge_sort(int LB, int UB);
 
     template<class U>
     friend ostream &operator<<(ostream &, Array<U>);
