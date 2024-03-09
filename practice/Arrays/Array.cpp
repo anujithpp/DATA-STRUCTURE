@@ -7,7 +7,7 @@ Array<T>::Array() {
 }
 
 template<class T>
-Array<T>::Array(int LB, int UB, T x[]) {
+[[maybe_unused]] Array<T>::Array(int LB, int UB, T x[]) {
 }
 
 template<class T>
@@ -137,7 +137,7 @@ void Array<T>::merge(int LB, int mid, int UB) {
     int n1 = mid - LB + 1;  // Size of left subarray
     int n2 = UB - mid;      // Size of right subarray
 
-    // Create temporary arrays to store the left and right subarrays
+    // Create temporary arrays to store the left and right sub arrays
     T L[n1], R[n2];
 
     // Copy data to temporary arrays
@@ -148,7 +148,7 @@ void Array<T>::merge(int LB, int mid, int UB) {
         R[j] = A[mid + 1 + j];
     }
 
-    // Merge the temporary arrays back into A[LB..UB]
+    // Merge the temporary arrays back into A[LB.UB]
     int i = 0;  // Initial index of left subarray
     int j = 0;  // Initial index of right subarray
     int k = LB; // Initial index of merged subarray
@@ -186,7 +186,7 @@ void Array<T>::merge_sort(int LB, int UB) {
         int m = (LB + UB) / 2;
         merge_sort(LB, m);          // Sort the left subarray
         merge_sort(m + 1, UB);      // Sort the right subarray
-        merge(LB, m, UB);           // Merge the sorted subarrays
+        merge(LB, m, UB);           // Merge the sorted sub arrays
     }
 }
 

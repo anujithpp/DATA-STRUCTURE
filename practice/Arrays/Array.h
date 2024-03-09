@@ -5,12 +5,12 @@ using namespace std;
 
 template<class T>
 class Array {
-    int LB, UB;
+    int LB{}, UB{};
     T A[100];
 public:
     Array();
 
-    Array(int, int, T[]);
+    [[maybe_unused]] Array(int, int, T[]);
 
     void insert_at_end(T);
 
@@ -37,6 +37,19 @@ public:
     void bubble_sort();
 
     void merge_sort(int LB, int UB);
+
+    /*
+     void insertion_sort();
+     int partition(int,int);
+     void quick_sort(int,int);
+     void rotate_clockwise(int);
+     void rotate_anticlockwise(int);
+     void distinct();
+     void frequency();
+     void replace(T,T);
+     int length();
+     void reverse(int);
+     */
 
     template<class U>
     friend ostream &operator<<(ostream &, Array<U>);
