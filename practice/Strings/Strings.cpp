@@ -12,7 +12,6 @@ Strings::Strings(int ub) {
     for (int i = LB; i < UB; i++) {
         cin >> S[i];
     }
-    // Add a null terminator at the end of the string
     S[UB] = '\0';
 }
 
@@ -37,7 +36,7 @@ void Strings::concatenate(const Strings &s) {
     int l2 = s.find_length();
     int l3 = l1 + l2;
 
-    char *s3 = new char[l3 + 1]; // Allocate memory for the concatenated string
+    char *s3 = new char[l3 + 1];
 
     for (int i = 0; i < l1; i++) {
         s3[i] = S[i];
@@ -45,9 +44,9 @@ void Strings::concatenate(const Strings &s) {
     for (int i = 0; i < l2; i++) {
         s3[l1 + i] = s.S[i];
     }
-    s3[l3] = '\0'; // Null-terminate the concatenated string
+    s3[l3] = '\0';
 
     cout << "Concatenated String: " << s3 << endl;
 
-    delete[] s3; // Deallocate memory
+    delete[] s3;
 }
