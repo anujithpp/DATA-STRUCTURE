@@ -13,18 +13,19 @@ public:
 
     T get_data();
 
+    void set_data(T);
+
     void set_link(Node *link);
 
     Node *get_link();
-
-    void set_data(T);
-
 };
 
 template<class T>
 class LinkedList {
     Node<T> *head;
 public:
+    void create();
+
     void display();
 
     void insertAtBeginning(T);
@@ -45,9 +46,10 @@ public:
 
     void reverse();
 
+    void reverseTraversal(Node<T> *node);
+
     void sorting();
 
-    template<class U>
-    friend ostream &operator<<(ostream &, LinkedList<U>);
-};
+    void concatenation(LinkedList &l);
 
+};
