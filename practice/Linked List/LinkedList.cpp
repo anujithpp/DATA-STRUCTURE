@@ -35,7 +35,7 @@ void LinkedList<T>::create() {
     do {
         cout << "Enter the data: ";
         cin >> x;
-        cout<<endl;
+        cout << endl;
         Node<T> *node = new Node<T>(x);
         if (head == nullptr) {
             head = node;
@@ -46,7 +46,7 @@ void LinkedList<T>::create() {
         }
         cout << "Do you want to enter more values? (y/n): ";
         cin >> choice;
-        cout<<endl;
+        cout << endl;
     } while (choice == "y");
 }
 

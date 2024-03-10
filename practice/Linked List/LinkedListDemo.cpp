@@ -1,7 +1,7 @@
 #include "LinkedList.cpp"
 
 int main() {
-
+    cout<<"Creating the first linked list"<<endl;
     LinkedList<int> myLinkedList{};
     myLinkedList.create();
     myLinkedList.display();
@@ -64,6 +64,7 @@ int main() {
     myLinkedList.reverseTraversal();
     cout << endl;*/
 
+    cout<<"Creating second linked list for concatenate to first linked list"<<endl;
     LinkedList<int> myLinkedList2{};
     cout << "Enter the data for new linked list: ";
     myLinkedList2.create();
