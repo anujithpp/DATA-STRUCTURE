@@ -1,33 +1,53 @@
 #include <iostream>
+#include<ostream>
 
 using namespace std;
 
-class LinkedList {
-private:
-    struct Node {
-        int data;
-        Node *link;
+template<class T>
 
-        Node(int value) : data(value), link(nullptr) {}
-    };
-
-    Node *head;
-
+class Node {
+    T data;
+    Node *link;
 public:
-    LinkedList();
+    Node(T);
 
+    T get_data();
+
+    void set_link(Node *link);
+
+    Node *get_link();
+
+    void set_data(T);
+
+};
+
+template<class T>
+class LinkedList {
+    Node<T> *head;
+public:
     void display();
 
-    void insertAtBeginning(int key);
+    void insertAtBeginning(T);
 
-    void insertAtEnd(int key);
+    void insertAtEnd(T);
 
-    void insertAtIndex(int index, int key);
+    void insertAfterKey(T, T);
+
+    void insertBeforeKey(T, T);
 
     void deleteAtBeginning();
 
     void deleteAtEnd();
 
-    void deleteAtIndex(int index);
+    void deleteAtKey(T);
 
+    void search(T);
+
+    void reverse();
+
+    void sorting();
+
+    template<class U>
+    friend ostream &operator<<(ostream &, LinkedList<U>);
 };
+
