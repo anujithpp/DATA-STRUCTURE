@@ -60,6 +60,7 @@ void Array<T>::deleteAtPosition(int index) {
     }
 }
 
+
 //Searching algorithms
 template<class T>
 T Array<T>::linearSearch(T key) {
@@ -74,6 +75,30 @@ T Array<T>::linearSearch(T key) {
     }
     return index;
 }
+
+template<class T>
+int Array<T>::binarySearch(T key) {
+    int left = LB;
+    int right = UB;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (A[mid] == key) {
+            return mid;
+        }
+
+        if (A[mid] < key) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
 
 //Sorting algorithms
 template<class T>
@@ -95,6 +120,48 @@ void Array<T>::bubbleSort(){
                 swap(A[j], A[j + 1]);
             }
         }
+    }
+}
+
+template<class T>
+void Array<T>::insertionSort(){
+    int n = UB+1;
+    for (int i = 1; i < n; ++i) {
+        T key = A[i];
+        int j = i - 1;
+
+        while (j >= 0 && A[j] > key) {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = key;
+    }
+}
+
+template<class T>
+void Array<T>::mergeSort(int LB, int UB) {
+    if (LB < UB) {
+        int mid = (LB + UB) / 2;
+        mergeSort(LB, mid);         // Sort first half
+        mergeSort(mid + 1, UB);     // Sort second half
+        merge(LB, mid, UB);         // Merge the sorted halves
+    }
+}
+
+template<class T>
+void Array<T>::selectionSort() {
+    int n = UB + 1; // Size of the array
+
+    for (int i = 0; i < n - 1; ++i) {
+        int minIndex = i;
+
+        for (int j = i + 1; j < n; ++j) {
+            if (A[j] < A[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        swap(A[i], A[minIndex]);
     }
 }
 
@@ -126,6 +193,49 @@ void Array<T>::swap(T& a, T& b) {
     b = temp;
 }
 
+template<class T>
+void Array<T>::merge(int LB, int mid, int UB) {
+    int n1 = mid - LB + 1;
+    int n2 = UB - mid;
+
+    // Create temporary arrays
+    T L[n1], R[n2];
+
+
+    for (int i = 0; i < n1; i++)
+        L[i] = A[LB + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = A[mid + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = LB;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            A[k] = L[i];
+            i++;
+        } else {
+            A[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+
+    while (i < n1) {
+        A[k] = L[i];
+        i++;
+        k++;
+    }
+
+
+    while (j < n2) {
+        A[k] = R[j];
+        j++;
+        k++;
+    }
+}
 
 
 //Operator Overloading of output stream
