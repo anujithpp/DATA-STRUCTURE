@@ -60,6 +60,7 @@ void Array<T>::deleteAtPosition(int index) {
     }
 }
 
+//Searching algorithms
 template<class T>
 T Array<T>::linearSearch(T key) {
     int index = -1;
@@ -74,6 +75,60 @@ T Array<T>::linearSearch(T key) {
     return index;
 }
 
+//Sorting algorithms
+template<class T>
+void Array<T>::quickSort(int LB, int UB) {
+    if (LB < UB) {
+        int pi = partition(LB, UB);
+        quickSort(LB, pi - 1);
+        quickSort(pi + 1, UB);
+    }
+}
+
+template<class T>
+void Array<T>::bubbleSort(){
+    int n = UB +1;
+
+    for (int i = 0; i < n - 1; ++i){
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (A[j] > A[j + 1]) {
+                swap(A[j], A[j + 1]);
+            }
+        }
+    }
+}
+
+
+//additional methods used inside other methods
+template<class T>
+int Array<T>::partition(int LB, int UB) {
+    T pivot = A[UB];
+    int i = LB - 1;
+    for (int j = LB; j < UB; ++j) {
+        if (A[j] <= pivot) {
+            ++i;
+            swap(A[i], A[j]);
+        }
+    }
+    swap(A[i + 1], A[UB]);
+    return i + 1;
+}
+
+template<class T>
+int Array<T>::size()  {
+    return UB + 1;
+}                 //returns the size of array *( size-1 = upperbound)
+
+template<class T>
+void Array<T>::swap(T& a, T& b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+
+
+//Operator Overloading of output stream
 template<class U>
 ostream &operator<<(ostream &os, Array<U> M) {
     int i;
