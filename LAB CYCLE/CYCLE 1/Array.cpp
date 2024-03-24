@@ -249,3 +249,65 @@ ostream &operator<<(ostream &os, Array<U> M) {
     os << endl;
     return os;
 }
+
+//Advance Array Operations
+template<class T>
+void Array<T>::leftRotate(int lRotate) {
+    int n = UB - LB + 1;
+    lRotate = lRotate % n;
+    for (int i = 0; i < lRotate; ++i) {
+        T temp = A[LB];
+        for (int j = LB; j < UB; ++j) {
+            A[j] = A[j + 1];
+        }
+        A[UB] = temp;
+    }
+}
+
+template<class T>
+void Array<T>::rightRotate(int rRotate) {
+    int n = UB - LB + 1;
+
+    rRotate = rRotate % n;
+
+    for (int i = 0; i < rRotate; ++i) {
+        T temp = A[UB];
+        for (int j = UB; j > LB; --j) {
+            A[j] = A[j - 1];
+        }
+        A[LB] = temp;
+    }
+}
+
+template<class T>
+void Array<T>::frequencyCount() {
+    cout << "Element\tFrequency" << endl;
+    for (int i = LB; i <= UB; ++i) {
+        int count = 0;
+        for (int j = LB; j <= UB; ++j) {
+            if (A[i] == A[j]) {
+                count++;
+            }
+        }
+        cout << A[i] << "\t" << count << endl;
+    }
+}
+
+template<class T>
+void Array<T>::distinctElements() {
+    cout << "Distinct Elements:" << endl;
+
+    for (int i = LB; i <= UB; ++i) {
+        int count = 0;
+        for (int j = LB; j <= UB; ++j) {
+            if (A[i] == A[j]) {
+                count++;
+            }
+        }
+        if (count == 1) {
+            cout << A[i] << ",";
+        }
+    }
+}
+
+
